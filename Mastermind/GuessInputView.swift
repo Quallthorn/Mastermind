@@ -45,7 +45,7 @@ struct GuessInputView: View {
             HStack(spacing: 0) {
                 Spacer()
                 ForEach(game.curGuess) { code in
-                    CurGuessButton(game: game, color: game.colorList[code.color].color, pos: code.pos)
+                    CurGuessButton(game: game, color: game.colorList[code.color].color, pos: code.pos, portrait: $portrait)
                 }
                 Spacer()
             }
@@ -191,6 +191,7 @@ struct CurGuessButton: View {
     @StateObject var game: GameInfo
     let color: Color
     let pos: Int
+    @Binding var portrait: Bool
     
     var body: some View{
         Button(action: {
@@ -206,9 +207,15 @@ struct CurGuessButton: View {
                         .frame(height: CGFloat(100 - game.totalLength * 7))
                         .foregroundColor(game.transparent)
                 }
-                Circle()
+                if portrait || game.totalLength < 6 || game.totalLength > 8 {
+                    Circle()
                     .frame(height: CGFloat(95 - game.totalLength * 7))
                     .foregroundColor(color)
+                } else {
+                    Circle()
+                    .frame(height: CGFloat(90 - game.totalLength * 7))
+                    .foregroundColor(color)
+                }
             }
         }
     }

@@ -41,7 +41,7 @@ struct ContentView: View {
 		.sheet(isPresented: $game.win, onDismiss: {game.gameActive = false}) {
 			WinSheet(length: game.totalLength, colors: game.colorList.count-1, guesses: game.guessNr, quote: quotes[Int.random(in: 0..<quotes.count)])
 		}
-		.task{
+		.task {
 			do {
 				let url = URL(string: "https://hws.dev/quotes.txt")!
 
@@ -50,6 +50,7 @@ struct ContentView: View {
 				}
 				print(quotes)
 			} catch {
+				quotes.append("Error, no quotes for you")
 				print("Error, no quotes for you")
 			}
 		}

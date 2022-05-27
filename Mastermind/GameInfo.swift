@@ -91,7 +91,7 @@ class GameInfo : ObservableObject {
             }
         }
         
-        for i in 0..<6 {
+        for i in 0..<allColorsList.count/4 {
             gridBooleanList.append(GridColorBoolean(row: [colorBooleanList[1+(i)*4], colorBooleanList[2+(i)*4], colorBooleanList[3+(i)*4], colorBooleanList[4+(i)*4]]))
         }
         

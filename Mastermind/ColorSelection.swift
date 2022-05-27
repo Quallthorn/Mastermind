@@ -40,7 +40,7 @@ struct ColorSelection: View {
                             
                         }
                         .onChange(of: geo.size.width) { _ in
-                            colorGridHeight = geo.size.width*6/4
+                            colorGridHeight = geo.size.width*CGFloat((game.allColorsList.count)/4)/4
                         }
                     }
                     .frame(height: colorGridHeight)

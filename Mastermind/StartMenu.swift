@@ -62,9 +62,11 @@ struct StartMenu: View {
                                 if Int(sliderValue) != game.totalLength || changedColor {
                                     game.setColors()
                                     game.setLength(length: Int(sliderValue))
-                                    game.gameActive = true
                                     showColors = false
                                     changedColor = false
+                                }
+                                if playGameLabel == start {
+                                    game.gameActive = true
                                 }
                                 playGameLabel = resume
                                 game.portrait = !UIDevice.current.orientation.isLandscape
